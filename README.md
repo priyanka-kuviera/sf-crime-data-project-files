@@ -36,13 +36,13 @@ python consumer_server.py
 
 you will find the data like below start flowing (1 data every second)
 
-/Users/kuviera/Desktop/TECHNOLOGY/Udacity/Projects/kafka_spark/sf-crime-data-project-files/kafkaConsumerConsole.png
+data
 
 Consume using Spark Streaming by following code
 spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.11:2.4.3 --master local[*] data_stream.py
 You will see aggregated data like below
 
-/Users/kuviera/Desktop/TECHNOLOGY/Udacity/Projects/kafka_spark/sf-crime-data-project-files/Consumer_spark_console.png
+
 data
 
 Monitroing Spark UI is at http://10.0.2.15:4040 on localhost
