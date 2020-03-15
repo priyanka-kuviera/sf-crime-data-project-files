@@ -13,8 +13,8 @@ schema = StructType([
     StructField("report_date", StringType(), True),
     StructField("call_date", StringType(), True),
     StructField("offense_date", StringType(), True),
-    StructField("call_time", TimestampType(),True),
-    StructField("call_date_time", TimestampType(),True),
+    StructField("call_time", StringType(), True),
+    StructField("call_date_time", StringType(), True),
     StructField("disposition", StringType(), True),
     StructField("address", StringType(), True),
     StructField("city", StringType(), True),
@@ -59,7 +59,8 @@ def run_spark_job(spark):
 
     # count the number of original crime type
     agg_df = distinct_table\
-        .select("original_crime_type_name", "call_date_time")\
+        .select(distinct_table.call_date_time.cast('timestamp'),\
+                                    'original_crime_type_name', 'disposition')\
         .withWatermark("call_date_time", '60 minutes')\
         .groupBy(window('call_date_time', '60 minutes'),
                                 'original_crime_type_name')\
