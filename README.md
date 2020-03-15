@@ -79,4 +79,16 @@ You will see aggregated data like below
 
 
 
+QUESTIONS:
 
+1.How did changing values on the SparkSession property parameters affect the throughput and      latency of the data?
+Ans. Throughput and latency was either increasing or decreasing using the parameters.
+a.processedRowsPerSecond
+b.maxOffsetPerTrigger
+c.maxRatePerPartition
+
+2.What were the 2-3 most efficient SparkSession property key/value pairs? Through testing multiple variations on values, how can you tell these were the most optimal?
+Ans. The changes in these values made a difference in processing time.Effective to great extent. 
+spark.sql.shuffle.partitions                10
+spark.streaming.kafka.maxRatePerPartition   10
+spark.default.parallelism                   10000
