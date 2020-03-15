@@ -16,10 +16,11 @@ class ProducerServer(KafkaProducer):
             for line in f:
                 message = self.dict_to_binary(line)
                 # TODO send the correct data
-                self.send()
+                self.send(self.topic,message)
                 time.sleep(1)
 
     # TODO fill this in to return the json dictionary to binary
     def dict_to_binary(self, json_dict):
-        return 
-        
+        return json.dumps(json_dict).encode('utf-8')
+
+    
